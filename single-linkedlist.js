@@ -157,6 +157,32 @@ class SingleLinkedList {
         this.length--;
         return removedNode;
     }
+
+    //Reverse a singlee linked list
+    reverse() {
+        //100->200->300
+        //T P     C    N H
+        //N->C.next...300->200
+        //C.next -> P..
+        //P->C P->200, 
+        //C->N C->300
+
+        //Swap the head and tail
+        let currentNode = this.head;
+        this.head = this.tail;
+        this.tail = currentNode;
+        //you'll need three pointers , currentNode, prevNode, nextNode
+        let previousNode = null;
+        let nextNode = null;
+
+        for (let i = 0; i < this.length; i++) {
+            nextNode = currentNode.next;//move nextNode as currentNode's next
+            currentNode.next = previousNode;//make next node as previous node
+            previousNode = currentNode;
+            currentNode = nextNode;
+        }
+        return this;
+    }
 }
 
 
