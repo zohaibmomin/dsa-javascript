@@ -42,4 +42,24 @@ class DoubleLinkedList {
         }
 
     }
+    //removes node from start
+    shift() {
+        if (!this.head) {
+            //if list is empty
+            return undefined;
+        } else {
+            let oldHead = this.head;
+            if (this.length === 1) {
+                this.tail = null;
+                this.head = null;
+            }else{
+                this.head = oldHead.next;
+                this.head.prev = null;
+                oldHead.next = null;
+            }
+            
+            this.length--;
+            return this.oldHead;
+        }
+    }
 }
