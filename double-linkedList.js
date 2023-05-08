@@ -115,4 +115,14 @@ class DoubleLinkedList {
 
         return current;
     }
+
+    //set a value for a given node at indexPos
+    set(indexPos, val) {
+        let foundNode = this.get(indexPos);
+        if (foundNode) {
+            foundNode.val = val;
+            return true;
+        }
+        return false;
+    }
 }
