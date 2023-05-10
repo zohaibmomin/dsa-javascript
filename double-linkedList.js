@@ -59,7 +59,7 @@ class DoubleLinkedList {
             }
 
             this.length--;
-            return this.oldHead;
+            return oldHead;
         }
 
     }
