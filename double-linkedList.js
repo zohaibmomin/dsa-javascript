@@ -139,6 +139,22 @@ class DoubleLinkedList {
         newNode.next = afterNode, afterNode.prev = newNode;
         this.length++;
         return true;
+    }
 
+    //remove a Node //HHH
+    //eg A B C HHH D E
+    remove(index) {
+        if (index < 0 || index >= this.length) return false;
+        if (index === 0) return !!this.shift();
+        if (index === this.length - 1) return !!this.pop();
+
+        var removedNode = this.get(index);//HHH
+        var beforeNode = removedNode.prev//C
+        var afterNode = removedNode.next;//D
+        removedNode.next = null, removedNode.prev = null;
+        beforeNode.next = afterNode, afterNode.prev = beforeNode;
+        this.length--;
+        return true;
     }
 }
+
