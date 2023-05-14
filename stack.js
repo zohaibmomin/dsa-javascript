@@ -6,7 +6,7 @@ class Node {
 }
 
 class Stack {
-    constructor(val) {
+    constructor() {
         this.first = null;
         this.last = null;
         this.size = 0;
