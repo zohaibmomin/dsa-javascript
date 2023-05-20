@@ -115,6 +115,27 @@ class BinarySearchTree {
         return visited;
 
     }
+    /* Depth First Search
+    Maintain array visited 
+    Start with root node and push to the visited array
+    if left then call same function with left
+    if right then call same function with right
+    
+    Entry point is with ROOT NODE.
+    Recursive function
+    */
+    dfsPreOrder() {
+        var visited = [];
+
+        function traverse(current) {
+            visited.push(current);
+            if (current.left) traverse(current.left);
+            if (current.right) traverse(current.right)
+
+        }
+        traverse(this.root);
+        return visited;
+    }
 }
 
 var bst = new BinarySearchTree();
