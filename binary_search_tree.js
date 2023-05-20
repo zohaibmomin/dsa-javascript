@@ -87,6 +87,26 @@ class BinarySearchTree {
         return current;
 
     }
+
+    bfs() {
+        var current = this.root,
+            visited = [],
+            queue = [current];
+
+        while (queue.length) {
+            current = queue.shift();
+            visited.push(current.value)
+            if (current.left) {
+                queue.push(current.left)
+            }
+            if (current.right) {
+                queue.push(current.right)
+            }
+        }
+
+        return visited;
+
+    }
 }
 
 var bst = new BinarySearchTree();
