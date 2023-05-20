@@ -89,6 +89,14 @@ class BinarySearchTree {
     }
 
     bfs() {
+        /* 
+        BFS - Runs across the tree from left to right
+        ;Maintain two arrays, one queue and other visited node
+        ;starts with root node added in queue
+        ;remove from queue and add to visited nodes
+        ;if left then push to queue
+        ;if right then push to queue
+        */
         var current = this.root,
             visited = [],
             queue = [current];
