@@ -115,7 +115,7 @@ class BinarySearchTree {
         return visited;
 
     }
-    /* Depth First Search
+    /* Depth First Search - First add to visited array then move to left
     Maintain array visited 
     Start with root node and push to the visited array
     if left then call same function with left
@@ -136,11 +136,25 @@ class BinarySearchTree {
         traverse(this.root);
         return visited;
     }
+/* DFS - Post order
+Add to visited Array after going extreme left and extreme right */
+    dfsPostOrder() {
+        var visited = [];
+
+        function traverse(current) {
+            if (current.left) traverse(current.left);
+            if (current.right) traverse(current.right)
+            visited.push(current);
+
+        }
+        traverse(this.root);
+        return visited;
+    }
 }
 
 var bst = new BinarySearchTree();
 bst.insert(10)
-bst.insert(7)
+bst.insert(6)
 bst.insert(8)
 bst.insert(15)
 bst.insert(13)
