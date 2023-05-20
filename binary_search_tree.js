@@ -128,7 +128,7 @@ class BinarySearchTree {
         var visited = [];
 
         function traverse(current) {
-            visited.push(current);
+            visited.push(current.value);
             if (current.left) traverse(current.left);
             if (current.right) traverse(current.right)
 
@@ -136,15 +136,28 @@ class BinarySearchTree {
         traverse(this.root);
         return visited;
     }
-/* DFS - Post order
-Add to visited Array after going extreme left and extreme right */
+    /* DFS - Post order
+    Add to visited Array after going extreme left and extreme right */
     dfsPostOrder() {
         var visited = [];
 
         function traverse(current) {
             if (current.left) traverse(current.left);
             if (current.right) traverse(current.right)
-            visited.push(current);
+            visited.push(current.value);
+
+        }
+        traverse(this.root);
+        return visited;
+    }
+/* DFS Inorder - Visit Left , Add , Visit Right */
+    dfsInOrder() {
+        var visited = [];
+
+        function traverse(current) {
+            if (current.left) traverse(current.left);
+            visited.push(current.value);
+            if (current.right) traverse(current.right)
 
         }
         traverse(this.root);
@@ -160,4 +173,7 @@ bst.insert(15)
 bst.insert(13)
 bst.insert(20)
 bst.insert(3)
+bst.dfsPreOrder()
+bst.dfsPostOrder()
+bst.dfsInOrder()
 
