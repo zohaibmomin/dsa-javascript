@@ -19,7 +19,7 @@ class BinarySearchTree {
     }
     insert(val) {
         var newNode = new Node(val);
-        
+
         if (this.root === null) {
             //means 1st node
             this.root = newNode;
@@ -56,6 +56,36 @@ class BinarySearchTree {
 
 
         }
+    }
+
+    find(val) {
+        if (this.root === null) {
+            //means empty
+            return undefined;
+        }
+
+        if (this.root.value === val) {
+            return this.root;
+        }
+
+        var current = this.root;
+        var found = false;
+
+        while (current && !found) {
+            if (val > current.value) {
+                //means right
+                current = current.right;
+            } else if (val < current.value) {
+                //means left
+                current = current.left;
+            } else {
+                //found
+                found = true;
+            }
+        }
+
+        return current;
+
     }
 }
 
