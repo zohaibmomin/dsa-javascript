@@ -25,8 +25,8 @@ class MaxBinaryHeap {
         ////Process to Remove the root(max)
         //swap first and last one(newly added node in the heap)
         const max = this.values[0];
-        const end = this.values.pop;//pop will remove the last element and adjust the position also.
-        if (this.values > 0) {
+        const end = this.values.pop();//pop will remove the last element and adjust the position also.
+        if (this.values.length > 0) {
             this.values[0] = end;
             this.sinkDown();
         }
@@ -62,7 +62,7 @@ class MaxBinaryHeap {
             if (rightChildIndex < length) {
                 rightChild = this.values[rightChildIndex];
                 //swap rightChild if bigger than root and also bigger than leftChild
-                if ((swap == null && rightChild > element) ||
+                if ((swap === null && rightChild > element) ||
                     (swap !== null && rightChild > leftChild)
                 ) {
                     swap = rightChildIndex;
@@ -89,3 +89,5 @@ heap.insert(18);
 heap.insert(27);
 heap.insert(12);
 heap.insert(55);
+heap.insert(1);
+heap.insert(45);
