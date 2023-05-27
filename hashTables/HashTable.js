@@ -20,34 +20,62 @@ class HashTable {
         if (!this.keyMap[index]) {
             this.keyMap[index] = [];
         }
+        // NOTE multiple set on same key will push both values
+        // It will not over-ride like how other languages SET works
         this.keyMap[index].push([key, value]);
     }
 
-    get(key){
+    get(key) {
         let index = this._hashOptimised(key);
         let value;
         if (!this.keyMap[index]) {
             value = this.keyMap[index];
-        }else{
+        } else {
             //hash collision
             let valArr = this.keyMap[index];
             valArr.forEach(element => {
-                if(element[0] === key){
+                if (element[0] === key) {
                     value = element[1];
                 }
             });
         }
-
         return value
+    }
 
+    values() {
+        let valueArr = [];
+        this.keyMap.forEach(element => {
+            if (element) {
+                element.forEach(ele => {
+                    if (!valueArr.includes(ele[1])) {
+                        valueArr.push(ele[1]);
+                    }
+                });
+            }
+        });
+        return valueArr;
+    }
+
+    keys() {
+        let valueArr = [];
+        this.keyMap.forEach(element => {
+            if (element) {
+                element.forEach(ele => {
+                    if (!valueArr.includes(ele[0])) {
+                        valueArr.push(ele[0]);
+                    }
+                });
+            }
+        });
+        return valueArr;
     }
 }
 
 ht = new HashTable(4);
-ht.set("zohaib","momin");
-ht.set("zb","shortmomin");
-ht.set("neha","momin");
-ht.set("nazia","momin");
+ht.set("zohaib", "momin");
+ht.set("zb", "shortmomin");
+ht.set("neha", "momin");
+ht.set("nazia", "momin");
 
 
 
