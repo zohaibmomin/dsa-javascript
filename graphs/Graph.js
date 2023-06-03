@@ -76,7 +76,7 @@ class Graph {
         visited[start] = true;
         while (stack.length) {
             //remove from stack & push to results
-            currentVertex = stack.pop();
+            currentVertex = stack.pop();//removes last
             results.push(currentVertex);
 
             // go deep for all neighbours
@@ -88,16 +88,36 @@ class Graph {
                     visited[element] = true;
                     stack.push(element);
                 }
-
             });
-
-
-
         }
         return results;
+    }
 
+    bfsIterative(start) {
+        //maintain a queue with initialised as start node
+        let queue = [start];
+        let results = [];
+        let visited = {};
 
+        let currentVertex;
+        visited[start] = true;
+        while (queue.length) {
+            //remove from queue & push to results
+            currentVertex = queue.shift();//removes 1st element
+            results.push(currentVertex);
 
+            // go deep for all neighbours
+            this.adjacencyList[currentVertex].forEach(element => {
+                // if not visited
+                // mark visit
+                // push to results
+                if (!visited[element]) {
+                    visited[element] = true;
+                    queue.push(element);
+                }
+            });
+        }
+        return results;
     }
 }
 
@@ -133,6 +153,7 @@ g.addEdge("D", "F")
 g.addEdge("E", "F")
 g.dfsRecursive("A")
 g.dfsIterative("A")
+g.bfsIterative("A")
 
 //          A
 //        /   \
